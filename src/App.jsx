@@ -3,6 +3,9 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
+import { Button } from './components/Button/Button';
+import { Counter } from './Counter'
+import { List } from './List'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -28,6 +31,7 @@ function App() {
         >
           Count is {count}
         </button>
+        <Button onClick={() => setCount((count) => count + 1)}>Press button</Button>
       </section>
 
       <div className="ticks"></div>
@@ -115,6 +119,11 @@ function App() {
 
       <div className="ticks"></div>
       <section id="spacer"></section>
+
+      <Counter />
+
+      <List />
+      
     </>
   )
 }
