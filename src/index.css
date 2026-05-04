@@ -3,6 +3,7 @@
   --text-color:#fff;
   --btn-bg-color:#383b3f;
   --btn-text-color:#fff;
+  --card-bg-color:#343a46;
 
 
   font: 18px/145% var(--sans);
@@ -24,6 +25,7 @@
 
     --btn-bg-color:#16444F;
     --btn-text-color:#57c4dc;
+    --card-bg-color:#ebedf0;
   }
 }
 
@@ -34,6 +36,7 @@
 
     --btn-bg-color:#383b3f;
     --btn-text-color:#fff;
+    --card-bg-color:#343a46;
   }
 }
 

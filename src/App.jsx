@@ -1,6 +1,7 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import './App.css'
-import { MainLayout } from './components/MainLayout'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import './App.css';
+import { MainLayout } from './components/MainLayout';
+import { Homepage } from './pages/HomePage';
 
 function App() {
 
@@ -9,7 +10,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route element={<MainLayout />}>
-          <Route path='/' element={<div>Home Page</div>}></Route>
+          <Route path='/' element={<Homepage />}></Route>
           <Route path='/forbidden' element={<div>Page Not Found 404</div>}></Route>
           <Route path='/addquestion' element={<div>Add Question</div>}></Route>
         </Route>
