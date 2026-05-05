@@ -3,6 +3,7 @@ import { API_URL } from '../../constants';
 import { useState, useEffect } from 'react';
 
 import { QuestionCardList } from '../../components/QuestionCardList/QuestionCardList';
+import { Loader } from '../../components/Loader';
 
 
 export const Homepage = () => {
@@ -24,6 +25,7 @@ export const Homepage = () => {
 
     return (
         <>
+            <Loader />
             <QuestionCardList cards={questions} />
         </>
     );
