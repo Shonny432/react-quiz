@@ -4,7 +4,7 @@
   --btn-bg-color:#383b3f;
   --btn-text-color:#fff;
   --card-bg-color:#343a46;
-
+  --sans: Helvetica, Arial, Sans-Serif;
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
