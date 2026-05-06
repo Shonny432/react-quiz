@@ -1,6 +1,6 @@
 // import cls from './Homepage.module.css';
 import { API_URL } from '../../constants';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import { QuestionCardList } from '../../components/QuestionCardList/QuestionCardList';
 import { Loader } from '../../components/Loader';
@@ -10,6 +10,8 @@ import { useFetch } from '../../hooks/useFetch';
 export const Homepage = () => {
     const [questions, setQuestions] = useState([]); //делаем состояние 
 
+    const [searchValue, setSearchValue] = useState("");
+
     const [getQuestions, isLoading, error] = useFetch(async (url) => {
         const response = await fetch(`${API_URL}/${url}`); //получили урл
         const questions = await response.json();//форматируем json в обычный объект
@@ -17,6 +19,8 @@ export const Homepage = () => {
         setQuestions(questions);
         return questions;
     });
+
+    // const inputRef = useRef();
 
     // const getQuestions = async () => {
     //     try {
@@ -37,10 +41,22 @@ export const Homepage = () => {
         getQuestions("react");
     }, []) //в useEffect 1 аргумент коллбек функция, а 2й это массив зависимостей
 
+    // const refTestHandler = () => {
+    //     console.dir(inputRef.current.value);
+    // }
+
+    const onSearchChangeHandler = (evt) => {
+        console.log(evt.target.value);
+        setSearchValue(evt.target.value);
+    }
+
     return (
         <>
-           {isLoading && <Loader />} 
-           {error && <p>{error}</p>}
+            {/* <input type="text" ref={inputRef} />
+            <button onClick={refTestHandler}>get ref</button> */}
+            <input type="text" value={searchValue} onChange={onSearchChangeHandler} />
+            {isLoading && <Loader />} 
+            {error && <p>{error}</p>}
             <QuestionCardList cards={questions} />
         </>
     );
