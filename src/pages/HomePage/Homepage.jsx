@@ -1,10 +1,11 @@
-// import cls from './Homepage.module.css';
+import cls from './Homepage.module.css';
 import { API_URL } from '../../constants';
 import { useState, useEffect, useRef } from 'react';
 
 import { QuestionCardList } from '../../components/QuestionCardList/QuestionCardList';
 import { Loader } from '../../components/Loader';
 import { useFetch } from '../../hooks/useFetch';
+import { SearchInput } from '../../components/SearchInput';
 
 
 export const Homepage = () => {
@@ -54,7 +55,10 @@ export const Homepage = () => {
         <>
             {/* <input type="text" ref={inputRef} />
             <button onClick={refTestHandler}>get ref</button> */}
-            <input type="text" value={searchValue} onChange={onSearchChangeHandler} />
+            <div className={cls.controlsContainer}>
+                <SearchInput value={searchValue} onChange={onSearchChangeHandler} />
+            </div>
+            
             {isLoading && <Loader />} 
             {error && <p>{error}</p>}
             <QuestionCardList cards={questions} />
