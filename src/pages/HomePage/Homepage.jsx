@@ -17,6 +17,8 @@ export const Homepage = () => {
 
     const [searchValue, setSearchValue] = useState("");
     const [sortSelectValue, setSortSelectValue] = useState("");
+    const [countSelectValue, setCountSelectValue] = useState("");
+    
 
     const controlsContainerRef = useRef();
 
@@ -89,15 +91,23 @@ export const Homepage = () => {
     const onSortSelectChangeHandler = (evt) => {
         setSortSelectValue(evt.target.value);
 
-        setSearchParams(`?_page=1&_per_page=${DEFAULT_PER_PAGE}&${evt.target.value}`); //мы не дожидаемся пока обновиться состояние выше, потому что если мы возьмем его в таком виде ?_page=1&per_page=${DEFAULT_PER_PAGE}&${sortSelectValue} мы получим старое потому что оно обновиться не успеет
+        setSearchParams(`?_page=1&_per_page=${countSelectValue}&${evt.target.value}`); //мы не дожидаемся пока обновиться состояние выше, потому что если мы возьмем его в таком виде ?_page=1&per_page=${DEFAULT_PER_PAGE}&${sortSelectValue} мы получим старое потому что оно обновиться не успеет
     }
+
+   
 
     const paginationHandler = (evt) => {
         if (evt.target.tagName === "BUTTON") {
-            setSearchParams(`?_page=${evt.target.textContent}&_per_page=${DEFAULT_PER_PAGE}&${sortSelectValue}`);
+            setSearchParams(`?_page=${evt.target.textContent}&_per_page=${countSelectValue}&${sortSelectValue}`);
 
             controlsContainerRef.current.scrollIntoView({behavior: "smooth"});
         }   
+    }
+
+     const onCountSelectChangeHandler = (evt) => {
+        setSearchParams(`?_page=1&_per_page=${evt.target.value}&${sortSelectValue}`);
+        setCountSelectValue(evt.target.value);
+
     }
 
     
@@ -116,6 +126,15 @@ export const Homepage = () => {
                     <option value="_sort=completed">completed ASC</option>
                     <option value="_sort=-completed">completed DESC</option>
                 </select>
+
+                <select name="" id="" value={countSelectValue} onChange={onCountSelectChangeHandler} className={cls.select}>
+                    <option value="" disabled>count</option>
+                    <hr />
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
             </div>
             
             {isLoading && <Loader />} 
@@ -126,11 +145,13 @@ export const Homepage = () => {
             {searchCards.length === 0 ? (
                 <p className={cls.noCardsInfo}>No cards...</p>
             ) : (
-                <div className={cls.paginationContainer} onClick={paginationHandler}>
+                pagination.length > 1 && (
+                    <div className={cls.paginationContainer} onClick={paginationHandler}>
                     {pagination.map((value) => {
                         return <Button key={value} isActive={value === getActivePageNumber()}>{value}</Button>
                     })}
                 </div>
+                )
             )}
 
             
