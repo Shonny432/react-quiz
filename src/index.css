@@ -5,6 +5,7 @@
   --btn-text-color:#fff;
   --card-bg-color:#343a46;
   --sans: Helvetica, Arial, Sans-Serif;
+  --green-color:#219679;
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
@@ -26,6 +27,7 @@
     --btn-text-color:#fff;
     
     --card-bg-color:#ebedf0;
+    --green-color:#219679;
   }
 }
 
@@ -38,6 +40,7 @@
     --btn-text-color:#57c4dc;
     
     --card-bg-color:#343a46;
+    --green-color:#219679;
   }
 }
 

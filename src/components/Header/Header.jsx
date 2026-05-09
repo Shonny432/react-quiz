@@ -8,7 +8,7 @@ export const Header = () => {
     return (
         <header className={cls.header}>
             <img src={ReactLogo} alt="react" onClick={() => navigate("/")} />
-            <span>React Quiz</span>
+            <p>React Quiz</p>
             <div className={cls.headerButtons}>
                 <Button onClick={() => navigate("/addquestion")}>Add</Button>
                 <Button>Login</Button>

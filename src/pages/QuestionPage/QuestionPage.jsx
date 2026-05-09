@@ -15,11 +15,16 @@ export const QuestionPage = () => {
     const [card, setCard] = useState(null); //делаем состояние 
     const [isChecked, setIsChecked] = useState(false);
     
-    const levelVariant = () => (card?.level === 1 ? "primary" : card.level === 2 ? "warning" : "alert");
-    const completedVariant = () => card?.completed ? "success" : "primary";
+    const levelVariant = () => (card.level === 1 ? "primary" : card.level === 2 ? "warning" : "alert");
+    const completedVariant = () => card.completed ? "success" : "primary";
     
     const [fetchCard, isCardLoading] = useFetch(async () => {
         const response = await fetch(`${API_URL}/react/${id}`); //получили урл
+
+        if (!response.ok) {
+            throw new Error('Question not found');
+        }
+
         const data = await response.json();//форматируем json в обычный объект
 
         setCard(data);
@@ -50,14 +55,13 @@ export const QuestionPage = () => {
 
     return (
         <>
-
         {isCardLoading && <Loader />}
 
         {card !== null && (
             <div className={cls.container}>
             <div className={cls.cardLabels}>
-                <Badge variant={levelVariant}>Level:{card.level}</Badge>
-                <Badge variant={completedVariant}>{card.completed ? "Completed" : "Not Completed"}</Badge>
+                <Badge variant={levelVariant()}>Level:{card.level}</Badge>
+                <Badge variant={completedVariant()}>{card.completed ? "Completed" : "Not Completed"}</Badge>
 
                 {card?.editDate && <p className={cls.editDate}>Edited: {card.editDate}</p>}
             </div>
