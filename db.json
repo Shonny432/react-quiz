@@ -564,6 +564,18 @@
       "resources": [],
       "level": 1,
       "completed": false
+    },
+    {
+      "question": "new hard question",
+      "answer": "answer",
+      "description": "very hard question",
+      "resources": [
+        "https://google.com",
+        " https://youtube.com"
+      ],
+      "level": 3,
+      "completed": false,
+      "id": "PuFy-50_lWM"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
