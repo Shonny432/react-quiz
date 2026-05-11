@@ -1,1 +1,1 @@
-import {QuestionCardList} from './QuestionCardList';
+import { QuestionCardList } from './QuestionCardList';

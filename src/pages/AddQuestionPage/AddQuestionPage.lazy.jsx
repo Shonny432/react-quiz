@@ -1,7 +1,5 @@
 import { lazy } from "react";
 
-const AddQuestionPageLazy = lazy(() => {
-    import AddQuestionPage from "./AddQuestionPage";
-})
+const AddQuestionPageLazy = lazy(() => import('./AddQuestionPage'));
 
 export default AddQuestionPageLazy;
