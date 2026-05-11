@@ -43,7 +43,7 @@ const createCardAction = async (_prevState, formData) => {
     }
 } //_prevState - подчеркивание означает что аргумент в данном случае не обязательный
 
-export const AddQuestionPage = () => {
+const AddQuestionPage = () => {
 
     const [formState, dispatchAction, isPending] = useActionState(createCardAction, { clearForm: true});
 
@@ -126,3 +126,5 @@ export const AddQuestionPage = () => {
         </>
     );
 };
+
+export default AddQuestionPage;

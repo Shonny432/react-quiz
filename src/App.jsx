@@ -4,7 +4,7 @@ import { MainLayout } from './components/MainLayout';
 import { Homepage } from './pages/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { QuestionPage } from './pages/QuestionPage';
-import { AddQuestionPage } from './pages/AddQuestionPage';
+import { AddQuestionPageLazy } from './pages/AddQuestionPage';
 
 function App() {
 
@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route element={<MainLayout />}>
           <Route path='/' element={<Homepage />}></Route>
-          <Route path='/addquestion' element={<AddQuestionPage />}></Route>
+          <Route path='/addquestion' element={<AddQuestionPageLazy />}></Route>
           <Route path='/question/:id' element={<QuestionPage/>}></Route>
           <Route path='*' element={<NotFoundPage />}></Route>
         </Route>
