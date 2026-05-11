@@ -28,12 +28,17 @@ const createCardAction = async (_prevState, formData) => {
             })
         })
 
+        if(!response.ok) {
+            throw new Error(response.statusText);
+        } //проверка на то если запрос не выполнился
+
         const question = response.json();
         toast.success("New question was successfully created");
 
         return isClearForm ? {} : question; 
     } catch (error) {
         toast.error(error.message);
+        return {};
     }
 } //_prevState - подчеркивание означает что аргумент в данном случае не обязательный
 
