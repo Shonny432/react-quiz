@@ -5,6 +5,7 @@ import { Button } from '../../components/Button';
 import { useEffect, useId, useState } from 'react';
 import { Loader } from '../../components/Loader';
 import { useFetch } from '../../hooks/useFetch';
+import { useAuth } from '../../hooks/useAuth';
 import { API_URL } from '../../constants';
 import { SmallLoader } from '../../components/Loader';
 
@@ -47,6 +48,8 @@ export const QuestionPage = () => {
     useEffect(() => {
         card !== null && setIsChecked(card.completed); //это useEffect для того чтобы менять чекбокс, когда бейдж комплетед, потому что при перезагрузке страницы бейдж не меняется так как он записывается в json, а чекбокс меняется 
     }, [card]);
+
+    const {isAuth} = useAuth();
 
     const onCheckboxChangeHandler = () => {
         setIsChecked(!isChecked);
@@ -96,7 +99,7 @@ export const QuestionPage = () => {
                 {isCardUpdating && <SmallLoader/>}
             </label>
 
-            <Button onClick={() => navigate(`/editquestion/${card.id}`)} isDisabled={isCardUpdating}>Edit Question</Button>
+            {isAuth && <Button onClick={() => navigate(`/editquestion/${card.id}`)} isDisabled={isCardUpdating}>Edit Question</Button>}
             <Button onClick={() => navigate(`/`)} isDisabled={isCardUpdating}>Back</Button>
         </div>
         )}
