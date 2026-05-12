@@ -5,6 +5,7 @@ import { Homepage } from './pages/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { QuestionPage } from './pages/QuestionPage';
 import { AddQuestionPageLazy } from './pages/AddQuestionPage';
+import EditQuestionPageLazy from './pages/EditQuestionPage/EditQuestionPage.lazy';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
           <Route path='/addquestion' element={<AddQuestionPageLazy />}></Route>
           <Route path='/question/:id' element={<QuestionPage/>}></Route>
           <Route path='*' element={<NotFoundPage />}></Route>
+          <Route path='/editquestion/:id' element={<EditQuestionPageLazy />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
