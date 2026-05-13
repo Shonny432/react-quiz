@@ -9,6 +9,7 @@ import EditQuestionPageLazy from './pages/EditQuestionPage/EditQuestionPage.lazy
 import { AuthProvider } from './auth/AuthProvider';
 import { useAuth } from './hooks/useAuth';
 import { ForbiddenPage } from './pages/ForbiddenPage';
+import { ThemeProvider } from './theme/ThemeProvider';
 
 function App() {
 
@@ -20,23 +21,26 @@ function App() {
   }
 
   return (
-    <AuthProvider>
-      <BrowserRouter>
-      <Routes>
-        <Route element={<MainLayout />}>
-          <Route path='/' element={<Homepage />}></Route>
-          <Route path='/question/:id' element={<QuestionPage/>}></Route>
-          <Route path='*' element={<NotFoundPage />}></Route>
-          <Route path='/forbidden' element={<ForbiddenPage />}></Route>
+    <ThemeProvider>
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route element={<MainLayout />}>
+              <Route path='/' element={<Homepage />}></Route>
+              <Route path='/question/:id' element={<QuestionPage/>}></Route>
+              <Route path='*' element={<NotFoundPage />}></Route>
+              <Route path='/forbidden' element={<ForbiddenPage />}></Route>
 
-          <Route element={<ProtectedRoutes />}>
-            <Route path='/addquestion' element={<AddQuestionPageLazy />}></Route>
-            <Route path='/editquestion/:id' element={<EditQuestionPageLazy />}></Route>
-          </Route>
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  </AuthProvider>
+              <Route element={<ProtectedRoutes />}>
+                <Route path='/addquestion' element={<AddQuestionPageLazy />}></Route>
+                <Route path='/editquestion/:id' element={<EditQuestionPageLazy />}></Route>
+              </Route>
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
+    </ThemeProvider>
+    
   )
 }
 
