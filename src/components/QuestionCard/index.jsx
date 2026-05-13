@@ -1,1 +1,0 @@
-import { QuestionCard } from './QuestionCard';
