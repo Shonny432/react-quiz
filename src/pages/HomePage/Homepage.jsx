@@ -1,5 +1,5 @@
 import cls from './Homepage.module.css';
-import { API_URL } from '../../constants';
+import { API_URL } from '../../constants/global.constants';
 import { useState, useEffect, useRef, useMemo } from 'react';
 
 import { QuestionCardList } from '../../components/QuestionCardList/QuestionCardList';

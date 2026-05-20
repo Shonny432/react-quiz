@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useFetch } from '../../hooks/useFetch';
 import { useEffect, useState } from 'react';
 import { Loader } from '../../components/Loader';
-import { API_URL } from '../../constants';
+import { API_URL } from '../../constants/global.constants';
 import { EditQuestion } from './EditQuestion';
 
 const EditQuestionPage = () => {
