@@ -1,6 +1,6 @@
-import {} from 'react';
+import { type FC, type SVGProps } from 'react';
 
-export const SearchIcon = (props) => {
+export const SearchIcon: FC<SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg width="20px" height="20px" viewBox="0 0 20 20" {...props}>
         <path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533
